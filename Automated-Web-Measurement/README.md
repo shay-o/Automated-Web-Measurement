@@ -7,7 +7,7 @@ An AI-powered tool that automates the creation of Google Analytics 4 tracking pl
 Given a website URL, GA4 AutoTrack will:
 
 1. **Crawl** the site to discover and classify page types (homepage, collection, product, blog, info pages, cart, etc.)
-2. **Analyze** each page using Claude AI to identify interactive elements, meaningful user actions, and available data points
+2. **Analyze** each page using AI (Claude via OpenRouter) to identify interactive elements, meaningful user actions, and available data points
 3. **Generate an SDR** (Solution Design Reference) — a comprehensive tracking plan spreadsheet documenting every recommended event, its parameters, triggers, and business purpose
 4. **Export a GTM Container** — an importable JSON file for Google Tag Manager with all tags, triggers, and variables pre-configured
 
@@ -19,9 +19,9 @@ python main.py --demo
 ```
 This generates a complete SDR and GTM container for **Oaklandish.com** using pre-built analysis.
 
-### Full Pipeline (requires Anthropic API key)
+### Full Pipeline (requires OpenRouter API key)
 ```bash
-export ANTHROPIC_API_KEY=sk-ant-...
+export OPENROUTER_API_KEY=sk-or-...
 python main.py --url https://www.example.com --ga4-id G-XXXXXXX
 ```
 
@@ -53,7 +53,7 @@ Importable into Google Tag Manager via **Admin → Import Container**. Includes:
 ```
 ┌─────────────┐     ┌──────────────┐     ┌───────────────┐     ┌──────────────┐
 │   Crawler    │────▶│  AI Analyzer  │────▶│ SDR Generator │────▶│  .xlsx file  │
-│  (requests   │     │  (Claude API) │     │  (openpyxl)   │     │              │
+│  (requests   │     │  (OpenRouter) │     │  (openpyxl)   │     │              │
 │  + BS4)      │     │              │     └───────────────┘     └──────────────┘
 └─────────────┘     │              │     ┌───────────────┐     ┌──────────────┐
                     │              │────▶│ GTM Generator │────▶│  .json file  │
@@ -64,7 +64,7 @@ Importable into Google Tag Manager via **Admin → Import Container**. Includes:
 ## Dependencies
 
 ```
-pip install requests beautifulsoup4 lxml openpyxl anthropic
+pip install requests beautifulsoup4 lxml openpyxl openai
 ```
 
 ## Configuration Options
@@ -72,7 +72,7 @@ pip install requests beautifulsoup4 lxml openpyxl anthropic
 | Flag | Description | Default |
 |------|-------------|---------|
 | `--url` | Target website URL | — |
-| `--api-key` | Anthropic API key | `$ANTHROPIC_API_KEY` |
+| `--api-key` | OpenRouter API key | `$OPENROUTER_API_KEY` |
 | `--ga4-id` | GA4 Measurement ID | `G-XXXXXXXXXX` |
 | `--output-dir` | Output directory | `output/` |
 | `--max-pages` | Max pages to crawl | `10` |
