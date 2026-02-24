@@ -12,6 +12,9 @@ output/
 # OS
 .DS_Store
 
+# Environment / secrets
+.env
+
 # Editor
 .vscode/
 .idea/

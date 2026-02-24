@@ -18,6 +18,12 @@ import logging
 import sys
 import os
 
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass  # dotenv optional; fall back to environment variables
+
 sys.path.insert(0, os.path.dirname(__file__))
 
 from src.crawler import SiteCrawler
