@@ -19,6 +19,10 @@ This tool uses AI to automate the work that Google Analytics consultants and spe
 
 ## What Needs Work Next
 
+### Misc To Do's
+- Get several high quality SDR examples
+- Work with Playwright to crawl and measure generated traffic
+
 ### Near-term improvements
 - **JavaScript-rendered page support**: The current crawler uses plain HTTP requests, which doesn't capture content rendered by JavaScript (SPAs, React/Vue apps). Need to integrate Playwright or Puppeteer for headless browser rendering. This is important for many modern e-commerce sites.
 - **Live testing against Oaklandish.com**: Run the full pipeline with real API calls against Oaklandish.com to validate and refine the AI analysis prompt.
