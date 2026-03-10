@@ -17,24 +17,27 @@ This tool uses AI to automate the work that Google Analytics consultants and spe
 2. **Consistency checking (future)**: Site already has tracking. Accept an existing SDR/implementation as input, then when a page changes, verify the new page's tracking is consistent with the established plan.
 3. **Audit/documentation (future)**: Scan an existing site's tracking implementation (gtag calls, GTM containers, dataLayer pushes) and reverse-engineer a human-readable SDR documenting what's currently tracked.
 
-## What Needs Work Next
+## Status
 
-### Misc To Do's
-- Get several high quality SDR examples
-- Work with Playwright to crawl and measure generated traffic
+Most recent: Prototype GA4 AutoTrack pipeline is working end-to-end with demo and live crawl modes.
+Focus: Improve crawler/analyzer robustness and add Playwright-based JavaScript-rendered page support for Oaklandish.com.
 
-### Near-term improvements
-- **JavaScript-rendered page support**: The current crawler uses plain HTTP requests, which doesn't capture content rendered by JavaScript (SPAs, React/Vue apps). Need to integrate Playwright or Puppeteer for headless browser rendering. This is important for many modern e-commerce sites.
-- **Live testing against Oaklandish.com**: Run the full pipeline with real API calls against Oaklandish.com to validate and refine the AI analysis prompt.
-- **Shopify-specific enhancements**: Oaklandish is Shopify-based. Shopify sites have predictable patterns (Liquid templates, Shopify Analytics meta tags, standard product JSON-LD). The analyzer could use these signals for better accuracy.
-- **Error handling and resilience**: The crawler and analyzer need better error handling for network issues, rate limiting, malformed HTML, and API failures.
+## Current tasks
 
-### Longer-term features
-- Import existing GTM container or SDR for audit/consistency use cases
-- GA4 Admin API integration to auto-create custom dimensions/metrics
-- CI/CD integration (analyze changed pages in pull requests)
-- Web UI or interactive mode for reviewing and adjusting recommendations
-- Support for non-Shopify platforms (WooCommerce, Magento, custom builds)
+- [ ] Integrate Playwright (or Puppeteer) so the crawler supports JavaScript-rendered and SPA pages.
+- [ ] Run the full pipeline against `oaklandish.com` with real API calls to validate and refine the AI analysis prompt.
+- [ ] Gather several high-quality SDR examples to guide tracking plan quality.
+- [ ] Harden error handling around network issues, rate limiting, and malformed HTML during crawl and analysis.
+
+## Backlog / ideas
+
+- [ ] Add Shopify-specific enhancements using Liquid patterns, Shopify Analytics meta tags, and product JSON-LD.
+- [ ] Work with Playwright to generate synthetic traffic and measure tracking behavior.
+- [ ] Import existing GTM containers or SDRs for audit/consistency use cases.
+- [ ] Integrate with the GA4 Admin API to auto-create custom dimensions/metrics.
+- [ ] Add CI/CD integration to analyze changed pages in pull requests.
+- [ ] Build a web UI or interactive mode for reviewing and adjusting recommendations.
+- [ ] Extend support beyond Shopify to other platforms (WooCommerce, Magento, custom builds)
 
 
 ## Architecture
