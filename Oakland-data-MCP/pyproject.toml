@@ -8,7 +8,7 @@ dependencies = [
     "httpx",
     "fastapi",
     "uvicorn[standard]",
-    "anthropic",
+    "openai",
     "python-dotenv",
 ]
 

@@ -21,7 +21,8 @@ pip install -e .
 
 ```bash
 cp .env.example .env
-# Edit .env — add your ANTHROPIC_API_KEY (required for web chat only)
+# Edit .env — add your OPENROUTER_API_KEY (required for web chat only)
+# Get a key at https://openrouter.ai/keys
 # SOCRATA_APP_TOKEN is optional but recommended for higher rate limits
 ```
 
@@ -61,10 +62,14 @@ python -m oakland_mcp.server
 ### 3b. Run the Web Chat App
 
 ```bash
-# Requires ANTHROPIC_API_KEY in .env
+# Requires OPENROUTER_API_KEY in .env
 python webapp/app.py
 # Open http://localhost:8000
 ```
+
+The web app uses [OpenRouter](https://openrouter.ai/) to access LLMs. By default it
+uses `anthropic/claude-sonnet-4-20250514`, but you can switch to any model by setting
+`OPENROUTER_MODEL` in your `.env` file (e.g., `google/gemini-2.5-pro`, `openai/gpt-4o`).
 
 ## Available Tools
 

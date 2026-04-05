@@ -163,4 +163,9 @@ High-value datasets identified from the catalog (by page views):
 
 - `SOCRATA_DOMAIN`: Oakland's Socrata domain (default: `data.oaklandca.gov`)
 - `SOCRATA_APP_TOKEN`: Optional app token for higher rate limits
-- `ANTHROPIC_API_KEY`: Required for the web app (Claude API)
+- `OPENROUTER_API_KEY`: Required for the web app (via OpenRouter)
+- `OPENROUTER_MODEL`: Optional model override (default: `anthropic/claude-sonnet-4-20250514`)
+
+The web app uses OpenRouter (openrouter.ai) rather than calling LLM providers directly.
+This provides a single API key for access to models from Anthropic, OpenAI, Google, and
+others, and makes it easy to switch models without code changes.
