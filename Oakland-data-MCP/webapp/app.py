@@ -26,7 +26,7 @@ STATIC_DIR = Path(__file__).parent / "static"
 app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
-MODEL = os.getenv("OPENROUTER_MODEL", "anthropic/claude-sonnet-4-20250514")
+MODEL = os.getenv("OPENROUTER_MODEL", "anthropic/claude-sonnet-4")
 
 client: OpenAI | None = None
 
