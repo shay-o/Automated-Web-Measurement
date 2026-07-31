@@ -18,6 +18,3 @@ output/
 # Editor
 .vscode/
 .idea/
-
-# Separate repos (tracked independently)
-Oakland-data-MCP/
